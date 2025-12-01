@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduLearn - Smart Education Platform</title>
+
+    <style>
+        /* ===== BASE STYLES ===== */
+        :root {
+            --primary: #3552a1;
+            --secondary: #4b6cb7;
+            --text: #2d3b55;
+            --light-bg: #f0f3fa;
+            --card-bg: #ffffff;
+            --shadow: rgba(0,0,0,0.1);
+
+            /* DARK MODE COLORS */
+            --primary-dark: #1e293b;
+            --secondary-dark: #0f172a;
+            --text-dark: #e2e8f0;
+            --dark-bg: #0b1120;
+            --card-dark-bg: #1e293b;
+            --shadow-dark: rgba(255,255,255,0.05);
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: var(--light-bg);
+            color: var(--text);
+            transition: 0.3s;
+            scroll-behavior: smooth;
+        }
+
+        /* ===== DARK MODE CLASS ===== */
+        .dark-mode {
+            background: var(--dark-bg);
+            color: var(--text-dark);
+        }
+
+        .dark-mode header {
+            background: linear-gradient(90deg, var(--secondary-dark), var(--primary-dark));
+        }
+
+        .dark-mode nav {
+            background: var(--secondary-dark);
+        }
+
+        .dark-mode .card {
+            background: var(--card-dark-bg);
+            box-shadow: 0 0 12px var(--shadow-dark);
+        }
+
+        .dark-mode .section {
+            color: var(--text-dark);
+        }
+
+        .dark-mode .about {
+            color: var(--text-dark);
+        }
+
+        .dark-mode .testimonial {
+            background: var(--card-dark-bg);
+        }
+
+        .dark-mode .faq-item {
+            background: var(--card-dark-bg);
+        }
+
+        .dark-mode footer {
+            background: var(--primary-dark);
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        /* ===== NAVBAR ===== */
+        nav {
+            background: var(--primary);
+            padding: 12px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            transition: 0.3s;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 18px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        /* ===== DARK MODE TOGGLE SWITCH ===== */
+        .toggle-container {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+        }
+
+        .toggle {
+            width: 50px;
+            height: 25px;
+            background: #ddd;
+            border-radius: 30px;
+            position: relative;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .toggle-circle {
+            width: 22px;
+            height: 22px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 1.5px;
+            left: 2px;
+            transition: 0.3s;
+        }
+
+        .dark-mode .toggle {
+            background: #555;
+        }
+
+        .dark-mode .toggle-circle {
+            transform: translateX(24px);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 60px 20px;
+            text-align: center;
+            background: #e6ebf5;
+        }
+
+        .dark-mode .hero {
+            background: var(--secondary-dark);
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            padding: 40px 10px;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 28px;
+        }
+
+        /* ===== CARD ===== */
+        .card {
+            width: 260px;
+            display: inline-block;
+            background: var(--card-bg);
+            margin: 15px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 12px var(--shadow);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            padding: 20px;
+            max-width: 700px;
+            margin: auto;
+            font-size: 18px;
+        }
+
+        /* ===== TESTIMONIAL ===== */
+        .testimonial {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px auto;
+            width: 80%;
+            font-style: italic;
+            box-shadow: 0 0 10px var(--shadow);
+        }
+
+        /* ===== FAQ ===== */
+        .faq-item {
+            background: white;
+            margin: 10px auto;
+            width: 80%;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .faq-item p {
+            display: none;
+            margin-top: 10px;
+        }
+
+        /* ===== CONTACT FORM ===== */
+        .contact-form {
+            width: 80%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        input, textarea {
+            width: 95%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #999;
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+    </style>
+
+    <script>
+        // ===== FAQ Toggle =====
+        function toggleFAQ(id) {
+            var answer = document.getElementById(id);
+            answer.style.display = (answer.style.display === "block") ? "none" : "block";
+        }
+
+        // ===== DARK MODE SCRIPT =====
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+
+            // Save mode
+            if (document.body.classList.contains("dark-mode")) {
+                localStorage.setItem("theme", "dark");
+            } else {
+                localStorage.setItem("theme", "light");
+            }
+        }
+
+        // Load saved theme
+        window.onload = function() {
+            if (localStorage.getItem("theme") === "dark") {
+                document.body.classList.add("dark-mode");
+            }
+        }
+    </script>
+
+</head>
+
+
+<body>
+
+<header>
+    <h1>EduLearn</h1>
+    <p>Your Smart Learning Partner</p>
+
+    <!-- Dark mode toggle -->
+    <div class="toggle-container">
+        <div class="toggle" onclick="toggleDarkMode()">
+            <div class="toggle-circle"></div>
+        </div>
+    </div>
+</header>
+
+<nav>
+    <a href="#courses">Courses</a>
+    <a href="#notes">Notes</a>
+    <a href="#about">About</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<div class="hero">
+    <h1>Learn Anytime, Anywhere</h1>
+    <p>Interactive courses • Notes • Doubt solving • Career guidance</p>
+</div>
+
+
+<!-- COURSES -->
+<div class="section" id="courses">
+    <h2>Popular Courses</h2>
+
+    <div class="card"><h3>Java Programming</h3><p>OOP + Projects</p></div>
+    <div class="card"><h3>Python</h3><p>Beginner to Advanced</p></div>
+    <div class="card"><h3>Cyber Security</h3><p>Ethical Hacking Basics</p></div>
+    <div class="card"><h3>Web Development</h3><p>HTML, CSS, JS</p></div>
+    <div class="card"><h3>DSA</h3><p>Master Data Structures</p></div>
+</div>
+
+
+<!-- NOTES -->
+<div class="section" id="notes">
+    <h2>Study Material</h2>
+
+    <div class="card"><h3>Java Notes</h3><p>Download PDF</p></div>
+    <div class="card"><h3>OS Notes</h3><p>Short & Simple</p></div>
+    <div class="card"><h3>Python Notes</h3><p>Easy Explanations</p></div>
+    <div class="card"><h3>DSA Notes</h3><p>Beginner Friendly</p></div>
+</div>
+
+
+<!-- ABOUT -->
+<div class="section" id="about">
+    <h2>About Us</h2>
+    <div class="about">
+        EduLearn is a simple and smart platform created for students to access easy notes,
+        quality courses, and practical learning.  
+        <br><br>
+        Our mission is to provide simple, accessible, and effective education to everyone.
+    </div>
+</div>
+
+
+<!-- TESTIMONIALS -->
+<div class="section">
+    <h2>What Students Say</h2>
+
+    <div class="testimonial">"Best platform for beginners!" – Rahul</div>
+    <div class="testimonial">"Notes are very easy to understand." – Sneha</div>
+    <div class="testimonial">"I improved my coding skills a lot!" – Arjun</div>
+</div>
+
+
+<!-- FAQ -->
+<div class="section" id="faq">
+    <h2>FAQ</h2>
+
+    <div class="faq-item" onclick="toggleFAQ('faq1')">
+        <strong>Is EduLearn free?</strong>
+        <p id="faq1">Yes! 100% free for students.</p>
+    </div>
+
+    <div class="faq-item" onclick="toggleFAQ('faq2')">
+        <strong>Can I download notes?</strong>
+        <p id="faq2">Yes, all notes are available in PDF format.</p>
+    </div>
+
+    <div class="faq-item" onclick="toggleFAQ('faq3')">
+        <strong>How to contact support?</strong>
+        <p id="faq3">Use the contact form below.</p>
+    </div>
+</div>
+
+
+<!-- CONTACT FORM -->
+<div class="section" id="contact">
+    <h2>Contact Us</h2>
+
+    <div class="contact-form">
+        <input type="text" placeholder="Your Name">
+        <input type="email" placeholder="Your Email">
+        <textarea rows="5" placeholder="Your Message"></textarea>
+        <button>Send Message</button>
+    </div>
+</div>
+
+
+<footer>
+    <p>© 2025 EduLearn | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
